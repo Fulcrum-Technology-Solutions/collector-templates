@@ -6,12 +6,12 @@ When creating REST Collectors, you'll replace a few values in the configuration 
 
 You will need the below values for Rapid7 to complete the integration:
 
-| Item                                | Value                                                  |
-| ----------------------------------- | ------------------------------------------------------ |
-| Region                              | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap)  |
-| Rapid7 API Key                      | The Rapid7 API Key                                     |
-| Rapid7 Region for the host metadata | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap)r |
-| Index                               | The index to send the events to                        |
+| Item                                | Value                                                 |
+| ----------------------------------- | ----------------------------------------------------- |
+| Region                              | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap) |
+| Rapid7 API Key                      | The Rapid7 API Key                                    |
+| Rapid7 Region for the host metadata | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap) |
+| Index                               | The index to send the events to                       |
 
 ## Downloading Configuration Files
 
@@ -50,7 +50,7 @@ From the top nav of a Cribl Stream instance or Group, select **Data > Sources**,
 
 Once you've created all four REST Collectors, you'll be ready to start collecting from the Rapid7 APIs.
 
-## Discovering and Collecting
+## Collecting
 
 You can perform the procedures in this section with any of the four REST Collectors you've created. To configure time ranges, you'll use **Earliest** and **Latest** values.
 
