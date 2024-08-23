@@ -1,0 +1,97 @@
+{
+  "type": "collection",
+  "ttl": "4h",
+  "removeFields": [],
+  "resumeOnBoot": false,
+  "schedule": {},
+  "streamtags": ["rapid7", "vulnerabilities"],
+  "workerAffinity": false,
+  "collector": {
+    "conf": {
+      "discovery": {
+        "discoverType": "none"
+      },
+      "collectMethod": "post",
+      "pagination": {
+        "type": "request_page",
+        "pageField": "page",
+        "sizeField": "size",
+        "size": 50,
+        "maxPages": 0,
+        "zeroIndexed": true,
+        "page": 0,
+        "totalPageField": "metadata.totalPages",
+        "totalRecordField": "metadata.totalResources"
+      },
+      "authentication": "none",
+      "timeout": 0,
+      "useRoundRobinDns": false,
+      "disableTimeFilter": false,
+      "decodeUrl": true,
+      "rejectUnauthorized": false,
+      "captureHeaders": false,
+      "safeHeaders": [],
+      "retryRules": {
+        "type": "backoff",
+        "interval": 20000,
+        "limit": 20,
+        "multiplier": 20,
+        "maxIntervalMs": 20000,
+        "codes": [429, 503, 400, 408],
+        "enableHeader": true,
+        "retryHeaderName": "retry-after"
+      },
+      "__scheduling": {
+        "stateTracking": {}
+      },
+
+      "collectUrl": "'https://<Region|The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap)>.api.insight.rapid7.com/vm/v4/integration/vulnerabilities'",
+      "collectRequestHeaders": [
+        {
+          "name": "Content-Type",
+          "value": "'application/json'"
+        },
+        {
+          "name": "User-Agent",
+          "value": "'cribl'"
+        },
+        {
+          "name": "X-Api-Key",
+          "value": "'<Rapid7 API Secret|The Rapid7 API Key>'"
+        }
+      ]
+    },
+    "destructive": false,
+    "type": "rest"
+  },
+  "input": {
+    "type": "collection",
+    "staleChannelFlushMs": 10000,
+    "sendToRoutes": true,
+    "preprocess": {
+      "disabled": true
+    },
+    "throttleRatePerSec": "0",
+    "breakerRulesets": ["Rapid7 InsightVM Breakers"],
+    "metadata": [
+      {
+        "name": "host",
+        "value": "'<Rapid7 Region for the host metadata|The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap) for the \"host\" metadata>.api.insight.rapid7.com'"
+      },
+      {
+        "name": "index",
+        "value": "'<Index name|The index to send the events to>'"
+      },
+      {
+        "name": "sourcetype",
+        "value": "'rapid7:insightvm:vulnerability_definition'"
+      },
+      {
+        "name": "source",
+        "value": "'Rapid7 InsightVM'"
+      }
+    ]
+  },
+  "savedState": {},
+  "id": "rapid7_insightvm_vulnerabilities"
+}

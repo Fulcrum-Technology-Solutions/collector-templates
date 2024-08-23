@@ -1,0 +1,92 @@
+{
+  "id": "Rapid7 InsightVM Breakers",
+  "minRawLength": 256,
+  "rules": [
+    {
+      "condition": "__collectible.collectorId=='rapid7_insightvm_vulnerabilities'",
+      "type": "json_array",
+      "timestampAnchorRegex": "/^/",
+      "timestamp": {
+        "type": "current",
+        "length": 150
+      },
+      "timestampTimezone": "local",
+      "timestampEarliest": "-420weeks",
+      "timestampLatest": "+1week",
+      "maxEventBytes": 10240000,
+      "disabled": false,
+      "parserEnabled": false,
+      "shouldUseDataRaw": false,
+      "jsonExtractAll": true,
+      "eventBreakerRegex": "/[\\n\\r]+(?!\\s)/",
+      "delimiterRegex": "/\\t/",
+      "fieldsLineRegex": "/^#[Ff]ields[:]?\\s+(.*)/",
+      "headerLineRegex": "/^#/",
+      "nullFieldVal": "-",
+      "cleanFields": true,
+      "name": "r7_vulnerabilities",
+      "jsonArrayField": "data",
+      "fields": []
+    },
+    {
+      "condition": "__collectible.collectorId=='rapid7_insightvm_assets_vulnerabilities'",
+      "type": "json_array",
+      "timestampAnchorRegex": "/\"last_scan_end\": \"/",
+      "timestamp": {
+        "type": "format",
+        "length": 150,
+        "format": "%Y-%m-%dT%H:%M:%S.%LZ"
+      },
+      "timestampTimezone": "local",
+      "timestampEarliest": "-420weeks",
+      "timestampLatest": "+1week",
+      "maxEventBytes": 10240000,
+      "disabled": false,
+      "parserEnabled": false,
+      "shouldUseDataRaw": false,
+      "jsonExtractAll": true,
+      "eventBreakerRegex": "/[\\n\\r]+(?!\\s)/",
+      "jsonArrayField": "data",
+      "name": "r7_asset_vulnerability_finding",
+      "fields": [
+        {
+          "name": "asset_hostname",
+          "value": "host_name"
+        },
+        {
+          "name": "asset_id",
+          "value": "id"
+        },
+        {
+          "name": "asset_ip",
+          "value": "ip"
+        }
+      ],
+      "jsonTimeField": "last_scan_end"
+    },
+    {
+      "condition": "__collectible.collectorId=='rapid7_insightvm_assets'",
+      "type": "json_array",
+      "timestampAnchorRegex": "/\"last_scan_end\": \"/",
+      "timestamp": {
+        "type": "format",
+        "length": 150,
+        "format": "%Y-%m-%dT%H:%M:%S.%LZ"
+      },
+      "timestampTimezone": "local",
+      "timestampEarliest": "-420weeks",
+      "timestampLatest": "+1week",
+      "maxEventBytes": 10240000,
+      "disabled": false,
+      "parserEnabled": false,
+      "shouldUseDataRaw": false,
+      "jsonExtractAll": true,
+      "eventBreakerRegex": "/[\\n\\r]+(?!\\s)/",
+      "name": "r7_assets",
+      "jsonArrayField": "data",
+      "jsonTimeField": "last_scan_end"
+    }
+  ],
+  "description": "Breakers for the Rapid7 InsightVM APIs",
+  "tags": "rapid7"
+}
