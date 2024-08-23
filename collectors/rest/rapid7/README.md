@@ -7,11 +7,11 @@ When creating REST Collectors, you'll replace a few values in the configuration 
 You will need the below values for Rapid7 to complete the integration:
 
 | Item                                | Value                                                  |
-| ----------------------------------- | ------------------------------------------------------ | ------------------------------- |
+| ----------------------------------- | ------------------------------------------------------ |
 | Region                              | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap)  |
 | Rapid7 API Key                      | The Rapid7 API Key                                     |
 | Rapid7 Region for the host metadata | The Rapid7 Region (i.e. us, us2, us3, eu, ca, au, ap)r |
-| Index                               | Index name                                             | The index to send the events to |
+| Index                               | The index to send the events to                        |
 
 ## Downloading Configuration Files
 
