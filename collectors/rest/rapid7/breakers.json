@@ -3,7 +3,7 @@
   "minRawLength": 256,
   "rules": [
     {
-      "condition": "__collectible.collectorId=='rapid7_insightvm_vulnerabilities'",
+      "condition": "__collectible.collectorId.startsWith('rapid7_insightvm_vulnerabilities')",
       "type": "json_array",
       "timestampAnchorRegex": "/^/",
       "timestamp": {
@@ -29,7 +29,7 @@
       "fields": []
     },
     {
-      "condition": "__collectible.collectorId=='rapid7_insightvm_assets_vulnerabilities'",
+      "condition": "__collectible.collectorId.startsWith('rapid7_insightvm_assets_vulnerabilities')",
       "type": "json_array",
       "timestampAnchorRegex": "/\"last_scan_end\": \"/",
       "timestamp": {
@@ -65,7 +65,7 @@
       "jsonTimeField": "last_scan_end"
     },
     {
-      "condition": "__collectible.collectorId=='rapid7_insightvm_assets'",
+      "condition": "__collectible.collectorId.startsWith('rapid7_insightvm_assets')",
       "type": "json_array",
       "timestampAnchorRegex": "/\"last_scan_end\": \"/",
       "timestamp": {
