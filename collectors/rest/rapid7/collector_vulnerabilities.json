@@ -57,7 +57,7 @@
         },
         {
           "name": "X-Api-Key",
-          "value": "'<Rapid7 API Secret|The Rapid7 API Key>'"
+          "value": "'<Rapid7 API Key|>'"
         }
       ]
     },
